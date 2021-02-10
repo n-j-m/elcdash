@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cases",
+  "info": {
+    "name": "Case"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "identifiedOn": {
+      "type": "date"
+    },
+    "isInClassroom": {
+      "type": "boolean"
+    },
+    "school": {
+      "model": "school",
+      "via": "cases"
+    }
+  }
+}

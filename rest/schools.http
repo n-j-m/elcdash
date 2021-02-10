@@ -1,0 +1,24 @@
+@baseUrl = http://localhost:1337
+
+# @name login
+POST {{baseUrl}}/auth/local
+content-type: application/json
+
+{
+  "identifier": "test@example.com",
+  "password": "Pass1234!"
+}
+
+###
+
+@authToken = {{login.response.body.$.jwt}}
+
+# @name schools
+GET http://localhost:1337/schools
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name cases
+GET {{baseUrl}}/cases
+Authorization: Bearer {{authToken}}
